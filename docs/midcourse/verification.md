@@ -64,6 +64,8 @@ PASS
 
 ---
 
+
+
 ### Test 2: Clear search
 
 Expected Result:
@@ -80,6 +82,8 @@ PASS
 
 ---
 
+
+
 ## CRUD Verification
 
 Verified:
@@ -93,6 +97,122 @@ Verified:
 Result:
 
 All endpoints functioned correctly.
+
+Status:
+
+PASS
+
+# Break Test Evidence
+
+
+
+## Break Test 1: Blank Title Validation
+
+Purpose:
+
+Verify that blank task titles are rejected.
+
+Change made:
+
+```python
+
+if not 1 <= len(v) <= 200:
+
+```
+
+temporarily changed to:
+
+```python
+
+if not 0 <= len(v) <= 200:
+
+```
+
+Result:
+
+- test_blank_title_rejected failed.
+
+- API returned HTTP 201 instead of HTTP 422.
+
+Evidence:
+
+```text
+
+FAILED test_blank_title_rejected
+
+assert 201 == 422
+
+```
+
+Fix:
+
+Restored the original validation rule.
+
+Verification:
+
+```text
+
+4 passed
+
+```
+
+Status:
+
+PASS
+
+---
+
+## Break Test 2: Status Transition Validation
+
+
+
+Purpose:
+
+Verify that invalid status transitions are rejected.
+
+Change made:
+
+```python
+
+return (current, new) in VALID_TRANSITIONS
+
+```
+
+temporarily changed to:
+
+```python
+
+return True
+
+```
+
+Result:
+
+- test_invalid_status_transition failed.
+
+- API returned HTTP 200 instead of HTTP 422.
+
+Evidence:
+
+```text
+
+FAILED test_invalid_status_transition
+
+assert 200 == 422
+
+```
+
+Fix:
+
+Restored the original validation rule.
+
+Verification:
+
+```text
+
+4 passed
+
+```
 
 Status:
 
