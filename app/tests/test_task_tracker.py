@@ -1,48 +1,119 @@
-from app.models import TaskCreate
+from fastapi.testclient import TestClient
+
+from main import app
 from app import storage
+
+client = TestClient(app)
+
 
 def setup_function():
     storage._reset()
 
 
-def test_create_task():
-    task = storage.add_task(
-        TaskCreate(title="Test Task")
+def test_blank_title_rejected():
+    response = client.post(
+        "/tasks",
+        json={
+            "title": "   "
+        }
     )
 
-    assert task.title == "Test Task"
+    assert response.status_code == 422
 
 
-def test_create_task_with_tags():
-    task = storage.add_task(
-        TaskCreate(
-            title="Tagged Task",
-            tags=["school", "urgent"]
-        )
+def test_get_missing_task_returns_404():
+    response = client.get(
+        "/tasks/not-found"
     )
 
-    assert task.tags == ["school", "urgent"]
+    assert response.status_code == 404
 
 
-def test_get_all_tasks():
-    storage.add_task(
-        TaskCreate(title="Task 1")
+def test_valid_status_transition():
+    create_response = client.post(
+        "/tasks",
+        json={
+            "title": "Task A"
+        }
     )
 
-    storage.add_task(
-        TaskCreate(title="Task 2")
+    task_id = create_response.json()["id"]
+
+    response = client.patch(
+        f"/tasks/{task_id}",
+        json={
+            "status": "InProgress"
+        }
     )
 
-    tasks = storage.get_all_tasks()
-
-    assert len(tasks) == 2
+    assert response.status_code == 200
 
 
-def test_delete_task():
-    task = storage.add_task(
-        TaskCreate(title="Delete Me")
+def test_invalid_status_transition():
+    create_response = client.post(
+        "/tasks",
+        json={
+            "title": "Task B"
+        }
     )
 
-    deleted = storage.delete_task(task.id)
+    task_id = create_response.json()["id"]
 
-    assert deleted is True
+    response = client.patch(
+        f"/tasks/{task_id}",
+        json={
+            "status": "Done"
+        }
+    )
+
+    assert response.status_code == 422
+    
+    
+def test_filter_by_tag():
+    client.post(
+        "/tasks",
+        json={
+            "title": "Task A",
+            "tags": ["urgent"]
+        }
+    )
+
+    client.post(
+        "/tasks",
+        json={
+            "title": "Task B",
+            "tags": ["school"]
+        }
+    )
+
+    response = client.get("/tasks?tag=urgent")
+
+    assert response.status_code == 200
+    data = response.json()
+
+    assert len(data) == 1
+    assert data[0]["title"] == "Task A"
+
+
+def test_search_filter():
+    client.post(
+        "/tasks",
+        json={
+            "title": "Project Report"
+        }
+    )
+
+    client.post(
+        "/tasks",
+        json={
+            "title": "Buy Groceries"
+        }
+    )
+
+    response = client.get("/tasks?search=project")
+
+    assert response.status_code == 200
+    data = response.json()
+
+    assert len(data) == 1
+    assert data[0]["title"] == "Project Report"
