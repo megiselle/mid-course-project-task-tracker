@@ -2,33 +2,15 @@
 
 ## When I Reach for AI First
 
-- When I need help debugging failing tests and error messages.
-
-- When I need help understanding existing code before changing it.
-
-- When I need help creating documentation, planning tasks, or reviewing requirements.
-
-- When I need help generating a structured starting point for CI, Docker, or testing work.
+I reach for AI first when I need help turning instructor feedback into clear, actionable technical tasks or when I need support organizing my work into manageable steps. During the Task Tracker project, AI was especially helpful for understanding requirements related to validation, testing, documentation, and project planning. I use AI to interpret test failures because it helps connect error messages to specific parts of the code and gives me ideas for where to investigate first. I also use AI when reviewing security findings, comparing different solution approaches, or planning features, as the course taught me that AI can be a valuable partner for analysis and brainstorming when grounded in the actual repository. Additionally, I rely on AI to help structure documentation, summarize project artifacts, and organize information before I perform my own verification. Throughout this course, I found that AI is most useful when it helps me understand, plan, and evaluate my work, while I remain responsible for validating the results and making the final decisions
 
 ## When I Do Not Reach for AI First
 
-- When handling credentials, secrets, tokens, or personal data.
-
-- When I have not yet read the relevant project files.
-
-- When I do not understand the requirement well enough to evaluate the AI output.
-
-- When a change affects ownership, grading, or business decisions that require my judgment.
+During this course, I learned that I should not reach for AI first when working with grades, student information, credentials, tokens, environment variables, or any confidential data because every prompt is also a governance decision. I also avoid relying on AI before reading the relevant repository files, documentation, and project requirements myself, since the quality of AI recommendations depends on understanding the real project context. If I cannot explain a piece of code, configuration, or recommendation in my own words, I do not accept it as my work. When reviewing AI-generated security findings, I treat them as suggestions to evaluate rather than facts to trust, performing my own verification and comparing AI findings with my manual observations. Likewise, when making grading, assessment, or instructional decisions, I rely on my professional judgment as an educator rather than AI recommendations. Finally, when learning something new, I prefer to understand the problem first and then use AI to challenge, refine, or validate my thinking, ensuring that I remain accountable for both the learning process and the final outcome.
 
 ## My Non-Negotiables
 
-- Never paste passwords, API keys, tokens, .env values, or personal data into AI tools.
-
-- Never accept code I cannot explain.
-
-- Always verify AI-generated changes before committing them.
-
-- Keep responsibility for the final result instead of assuming the AI is correct.
+My non-negotiables are simple and come directly from the lessons I learned throughout this course. I never paste passwords, API keys, tokens, environment variables, personal data, or any confidential information into AI tools because every prompt is also a governance and data-sharing decision. I never accept code, configurations, or recommendations that I cannot explain in my own words, since ownership requires understanding what I am submitting. Before committing any AI-generated change, I verify it through file review, testing, documentation checks, or manual validation rather than assuming the output is correct. Most importantly, I remain responsible for the final result at all times. AI can help me generate ideas, review code, identify issues, and organize information, but accountability for the quality, accuracy, security, and integrity of the work remains mine.
 
 ## My Review Rules
 
