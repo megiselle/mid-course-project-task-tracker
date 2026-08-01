@@ -134,4 +134,94 @@ requirements.txt
 
 ```
 
-``
+
+
+## Final Project
+
+Branch reviewed: final-project
+
+### What this submission demonstrates
+
+- Existing Task Tracker app still runs inside the intended course scope.
+- CI runs the pytest suite on push and pull request.
+- Docker image builds and runs with `/health` returning HTTP 200.
+- AI review, security review, and ownership evidence are documented in `docs/`.
+
+### How to run locally
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the API:
+
+```bash
+uvicorn main:app --reload --port 8000
+```
+
+Verify health endpoint:
+
+```text
+http://127.0.0.1:8000/health
+```
+
+### How to run tests
+
+```bash
+python -m pytest
+```
+
+Expected result:
+
+```text
+6 passed
+```
+
+### How to run with Docker
+
+Build image:
+
+```bash
+docker build -t task-tracker .
+```
+
+Run container:
+
+```bash
+docker run -p 8000:8000 task-tracker
+```
+
+Verify:
+
+```text
+http://localhost:8000/health
+```
+
+### Evidence Files
+
+- docs/release-evidence.md
+- docs/final-ai-review.md
+- docs/ai-playbook.md
+
+### AI Assistance Summary
+
+AI helped draft and review:
+- Testing improvements
+- Status transition validation
+- Documentation
+- Docker configuration
+- CI configuration
+- Security review documentation
+
+Verification methods used:
+- Pytest
+- Manual API testing
+- `/health` endpoint verification
+- Frontend verification
+- File review
+
+One AI suggestion I corrected:
+
+An AI assumption suggested that status-transition validation already existed. I reviewed the code and implemented explicit transition rules based on instructor requirements instead of accepting that assumption.``

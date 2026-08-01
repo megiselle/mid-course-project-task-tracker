@@ -1,0 +1,91 @@
+# Release Evidence
+
+## Baseline
+
+- Branch: final-project
+- Date: 2026-08-01
+- Local app run command:
+
+```bash
+
+uvicorn main:app --reload --port 8000
+
+```
+
+- /health result:
+
+```json
+
+{"status":"ok"}
+
+```
+
+- Frontend check:
+
+Opened `frontend/index.html` in a browser. The Task Tracker Kanban board loaded successfully, including the Search Tasks box and the To Do, In Progress, and Done columns.
+
+- Test command:
+
+```bash
+
+python -m pytest
+
+```
+
+- Test result:
+
+```text
+
+6 passed, 1 warning
+
+```
+
+## CI Evidence
+
+- Workflow file: Not yet created.
+- Latest run link or note: Pending creation of GitHub Actions workflow.
+- Test command used by CI:
+
+```bash
+
+python -m pytest
+
+```
+
+- Shortcut check:
+- No continue-on-error
+- No `|| true`
+- Pytest is not skipped
+
+
+
+## Docker Evidence
+
+- - Build command:
+  ```bash
+  docker build -t task-tracker .
+  ```
+  - Run command:
+  ```bash
+  docker run -p 8000:8000 task-tracker
+  ```
+  - /health check:
+  Not executed during final-project verification because Docker Desktop was not installed on the development machine.
+  - Non-root check, if implemented:
+  Not implemented in the current Dockerfile.
+  - No-baked-secrets check:
+  Verified manually. No `.env` files, tokens, passwords, API keys, or credentials are copied into the image.
+
+
+
+## Documentation Claim-vs-Reality Log
+
+| Claim checked | Evidence used | Result | Change made, if any |
+
+|--------------|--------------|---------|--------------------|
+
+| API starts with `uvicorn main:app --reload --port 8000` | Manual run in terminal | Verified | None |
+
+| GET `/health` returns application status | Browser check | Verified | None |
+
+| Tests can be executed with `python -m pytest` | Pytest run | Verified | None |
