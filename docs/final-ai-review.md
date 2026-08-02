@@ -1,6 +1,6 @@
 # Final AI Review and Ownership Evidence
 
-## [AGENTS.md](http://AGENTS.md) Guardrails
+## `AGENTS.md`Guardrails
 
 - Repo-specific stack and commands included: Yes
 
@@ -30,11 +30,11 @@
 
 |----------|--------------|--------|--------|------------|
 
-| No authentication or authorization on task endpoints. | [main.py](http://main.py) | Valid | Acceptable for course scope, but would be a production risk. | Document scope limitation. |
+| No authentication or authorization on task endpoints. | `main.py` | Valid | Acceptable for course scope, but would be a production risk. | Document scope limitation. |
 
-| In-memory storage is not persistent. | app/[storage.py](http://storage.py) | Noise | True, but this is an intentional learning-project decision. | No action required. |
+| In-memory storage is not persistent. | app/`storage.py` | Noise | True, but this is an intentional learning-project decision. | No action required. |
 
-| Task title validation prevents blank titles. | app/[models.py](http://models.py) | Valid | Input validation exists and protects data quality. | Continue testing validation behavior. |
+| Task title validation prevents blank titles. | app/`models.py` | Valid | Input validation exists and protects data quality. | Continue testing validation behavior. |
 
 ---
 
@@ -75,3 +75,9 @@ This reinforced the Module 5 principle of grading AI output rather than acceptin
  - Passwords
 
  - Tokens
+
+   ## Ownership Statement
+
+I confirm that I understand the architecture, implementation, testing, and documentation included in this repository and am comfortable submitting it as my own work. AI tools were used to assist with planning, code suggestions, debugging, and documentation, but all outputs were reviewed, tested, and adapted before inclusion. I made the final decisions regarding the design and implementation of the Task Tracker application. I can explain how the API endpoints, validation rules, tests, CI workflow, and Docker configuration work. For these reasons, I consider this repository to accurately represent my own learning and effort.
+
+ 
