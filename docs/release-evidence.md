@@ -97,8 +97,3 @@ Verified manually. No `.env` files, tokens, passwords, API keys, or credentials 
 | GET `/health` returns application status | Browser check | Verified | None |
 | Tests can be executed with `python -m pytest` | Pytest run | Verified | None |
 
-| Claim checked | Evidence used | Result | Change made, if any |
-|--------------|--------------|---------|--------------------|
-| API starts with `uvicorn main:app --reload --port 8000` | Manual run in terminal | Verified | None |
-| GET `/health` returns application status | Browser check | Verified | None |
-| Tests can be executed with `python -m pytest` | Pytest run | Verified | None |
