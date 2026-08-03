@@ -69,12 +69,19 @@ This reinforced the Module 5 principle of grading AI output rather than acceptin
 ## Three AI Usage Rules
 
 1. Never paste:
+   - API keys
+   - Passwords
+   - Tokens
 
- - API keys
+2. Always verify:
+   - AI-generated code before committing changes.
+   - Test results before recording evidence.
+   - Documentation claims against the actual repository contents.
 
- - Passwords
-
- - Tokens
+3. Record AI contributions by:
+   - Documenting significant AI-assisted changes.
+   - Reviewing and adapting AI suggestions before use.
+   - Maintaining ownership of all final decisions and submitted work.
 
    ## Ownership Statement
 
